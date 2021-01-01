@@ -18,11 +18,31 @@ const getBooks=(req,res)=>{
     })
     }
 
-
-
-
+    const getSpecificBook=(req,res)=>{
+        const {book_id}=req.params.book_id
+        const query=`SELECT * FROM library WHERE book_id=?`
+        const data=[book_id]
+        Connection.query(query,data,(err,results)=>{
+            if (err) throw err;
+            res.json(results)
+        })
+        }
+    
+        
+        const deleteSpecificBook=(req,res)=>{
+            const {book_id}=req.params.book_id
+            const query=`DELETE * FROM library WHERE book_id=?`
+            const data=[book_id]
+            Connection.query(query,data,(err,results)=>{
+                if (err) throw err;
+                res.json(results)
+            })
+            }
+        
 
 module.exports={
 createBook,
-getBooks
+getBooks,
+getSpecificBook,
+deleteSpecificBook
 }
