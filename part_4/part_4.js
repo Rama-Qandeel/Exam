@@ -9,12 +9,27 @@ return 'NO' if the parentheses in the input string are not balanced,.
 
 */
 
-console.log('PART 4');
+console.log("PART 4");
 
-const isABalancedString = () => {
-  // WRITE YOUR CODE BELOW THIS LINE
+const isABalancedString = (str) => {
+  str = str.split("");
+  let sqare = 0;
+  let parenth = 0;
+  let kerly = 0;
+  str.forEach((ele) => {
+    if (ele === "(" || ele === ")") {
+      sqare++;
+    }
+    if (ele === "[" || ele === "]") {
+      parenth++;
+    }
+    if (ele === "{" || ele === "}") {
+      kerly++;
+    }
+  });
+
+  return sqare % 2 === 0 && parenth % 2 === 0 && kerly % 2 === 0 ? "yes" : "no";
 };
-
 /*
 
 Examples:
